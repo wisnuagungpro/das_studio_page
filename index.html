@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DAS Studio - IT Consultant & Digital Solutions</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1e40af;
+            --secondary: #0f172a;
+            --accent: #3b82f6;
+            --text: #334155;
+            --text-light: #64748b;
+            --bg: #ffffff;
+            --bg-alt: #f8fafc;
+            --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background: var(--bg);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header & Navigation */
+        header {
+            background: var(--gradient);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="rgba(255,255,255,0.1)" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,138.7C960,139,1056,117,1152,106.7C1248,96,1344,96,1392,96L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>') no-repeat bottom;
+            opacity: 0.3;
+        }
+
+        .logo {
+            font-size: 3em;
+            font-weight: 700;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .tagline {
+            font-size: 1.3em;
+            font-weight: 300;
+            opacity: 0.95;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Section Styles */
+        section {
+            padding: 80px 0;
+        }
+
+        section:nth-child(even) {
+            background: var(--bg-alt);
+        }
+
+        h2 {
+            font-size: 2.5em;
+            color: var(--secondary);
+            margin-bottom: 20px;
+            text-align: center;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--gradient);
+            border-radius: 2px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: var(--text-light);
+            font-size: 1.1em;
+            margin-bottom: 50px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+            margin-top: 40px;
+        }
+
+        .about-text {
+            font-size: 1.1em;
+            line-height: 1.8;
+        }
+
+        .about-text p {
+            margin-bottom: 20px;
+        }
+
+        .ceo-card {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .ceo-card h3 {
+            color: var(--primary);
+            font-size: 1.8em;
+            margin-bottom: 5px;
+        }
+
+        .ceo-card p {
+            color: var(--text-light);
+            font-size: 1.1em;
+            margin-bottom: 20px;
+        }
+
+        .ceo-card .contact {
+            background: var(--gradient);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 50px;
+            display: inline-block;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.3s;
+        }
+
+        .ceo-card .contact:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Services Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .service-card {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-top: 4px solid var(--primary);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+
+        .service-icon {
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+
+        .service-card h3 {
+            color: var(--secondary);
+            font-size: 1.5em;
+            margin-bottom: 15px;
+        }
+
+        .service-card p {
+            color: var(--text-light);
+            line-height: 1.8;
+        }
+
+        .service-features {
+            margin-top: 20px;
+            list-style: none;
+        }
+
+        .service-features li {
+            padding: 8px 0;
+            padding-left: 25px;
+            position: relative;
+            color: var(--text);
+        }
+
+        .service-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        /* Rate Card */
+        .rate-card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .pricing-card {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pricing-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: var(--gradient);
+        }
+
+        .pricing-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+
+        .pricing-card.featured {
+            border: 3px solid var(--primary);
+        }
+
+        .featured-badge {
+            position: absolute;
+            top: 20px;
+            right: -35px;
+            background: var(--gradient);
+            color: white;
+            padding: 5px 40px;
+            transform: rotate(45deg);
+            font-size: 0.85em;
+            font-weight: 600;
+        }
+
+        .pricing-card h3 {
+            font-size: 1.8em;
+            color: var(--secondary);
+            margin-bottom: 10px;
+        }
+
+        .price {
+            font-size: 2.5em;
+            color: var(--primary);
+            font-weight: 700;
+            margin: 20px 0;
+        }
+
+        .price-label {
+            font-size: 0.5em;
+            color: var(--text-light);
+            font-weight: 400;
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin: 30px 0;
+        }
+
+        .pricing-features li {
+            padding: 12px 0;
+            border-bottom: 1px solid #e2e8f0;
+            color: var(--text);
+        }
+
+        .cta-button {
+            display: block;
+            background: var(--gradient);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-align: center;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.3s;
+            margin-top: 20px;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Why Choose Us */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .feature-item {
+            text-align: center;
+            padding: 30px;
+        }
+
+        .feature-icon {
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+
+        .feature-item h3 {
+            color: var(--secondary);
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+
+        .feature-item p {
+            color: var(--text-light);
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background: var(--gradient);
+            color: white;
+            text-align: center;
+            padding: 80px 20px;
+        }
+
+        .contact-section h2 {
+            color: white;
+        }
+
+        .contact-section h2::after {
+            background: white;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+
+        .contact-item {
+            font-size: 1.2em;
+        }
+
+        .contact-item a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            transition: opacity 0.3s;
+        }
+
+        .contact-item a:hover {
+            opacity: 0.8;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--secondary);
+            color: white;
+            text-align: center;
+            padding: 30px 0;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .logo {
+                font-size: 2em;
+            }
+
+            .tagline {
+                font-size: 1em;
+            }
+
+            h2 {
+                font-size: 2em;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .services-grid,
+            .rate-card-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                gap: 20px;
+            }
+        }
+
+        /* Smooth Scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="logo">DAS STUDIO</div>
+            <div class="tagline">IT Consultant & Digital Solutions Partner</div>
+        </div>
+    </header>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <h2>Tentang Kami</h2>
+            <p class="subtitle">Partner terpercaya untuk transformasi digital dan solusi teknologi informasi bisnis Anda</p>
+            
+            <div class="about-content">
+                <div class="about-text">
+                    <p><strong>DAS Studio</strong> adalah perusahaan konsultan IT yang berfokus pada pengembangan sistem informasi dan solusi digital berbasis AI untuk meningkatkan efisiensi operasional bisnis Anda.</p>
+                    
+                    <p>Dengan pengalaman dalam mengimplementasikan solusi teknologi untuk sektor pemerintahan dan swasta, kami hadir sebagai mitra strategis yang memahami kebutuhan transformasi digital di era modern.</p>
+                    
+                    <p>Kami berkomitmen memberikan solusi teknologi yang tidak hanya inovatif, tetapi juga praktis dan terukur hasilnya untuk pertumbuhan bisnis Anda.</p>
+                </div>
+
+                <div class="ceo-card">
+                    <h3>Wisnu Agung Prasetiyo</h3>
+                    <p>Chief Executive Officer</p>
+                    <a href="https://wa.me/6289660103000" class="contact">📱 0896 6010 3000</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services">
+        <div class="container">
+            <h2>Layanan Kami</h2>
+            <p class="subtitle">Solusi teknologi komprehensif untuk mendukung pertumbuhan bisnis Anda</p>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">💻</div>
+                    <h3>Pengembangan Sistem Informasi</h3>
+                    <p>Membangun aplikasi custom sesuai kebutuhan bisnis Anda dengan teknologi terkini dan skalabel.</p>
+                    <ul class="service-features">
+                        <li>Web Application Development</li>
+                        <li>Mobile Apps (Android & iOS)</li>
+                        <li>Progressive Web Apps (PWA)</li>
+                        <li>API Integration & Development</li>
+                        <li>Database Design & Optimization</li>
+                        <li>Cloud Deployment & Management</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">🤖</div>
+                    <h3>Tools AI & Automation</h3>
+                    <p>Implementasi kecerdasan buatan untuk otomasi proses bisnis dan peningkatan produktivitas.</p>
+                    <ul class="service-features">
+                        <li>Chatbot & Virtual Assistant</li>
+                        <li>CRM dengan AI Analytics</li>
+                        <li>Document Processing Automation</li>
+                        <li>Predictive Analytics</li>
+                        <li>Workflow Automation (N8N, Zapier)</li>
+                        <li>RAG-based Knowledge Systems</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">🎯</div>
+                    <h3>Konsultasi & Strategi IT</h3>
+                    <p>Konsultasi strategis untuk perencanaan dan implementasi teknologi informasi yang tepat sasaran.</p>
+                    <ul class="service-features">
+                        <li>IT Infrastructure Consulting</li>
+                        <li>Digital Transformation Strategy</li>
+                        <li>System Architecture Design</li>
+                        <li>Security & Compliance Audit</li>
+                        <li>Technology Stack Selection</li>
+                        <li>Project Management & Training</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">🛡️</div>
+                    <h3>Maintenance & Support</h3>
+                    <p>Dukungan berkelanjutan untuk memastikan sistem Anda berjalan optimal dan aman.</p>
+                    <ul class="service-features">
+                        <li>24/7 Technical Support</li>
+                        <li>System Monitoring & Maintenance</li>
+                        <li>Bug Fixes & Updates</li>
+                        <li>Performance Optimization</li>
+                        <li>Backup & Disaster Recovery</li>
+                        <li>Security Updates & Patches</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">📊</div>
+                    <h3>Business Intelligence & Analytics</h3>
+                    <p>Mengubah data menjadi insight strategis untuk pengambilan keputusan bisnis yang lebih baik.</p>
+                    <ul class="service-features">
+                        <li>Dashboard & Reporting System</li>
+                        <li>Data Visualization</li>
+                        <li>Real-time Analytics</li>
+                        <li>KPI Monitoring System</li>
+                        <li>Data Warehouse Design</li>
+                        <li>ETL Process Development</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">☁️</div>
+                    <h3>Cloud Solutions & DevOps</h3>
+                    <p>Migrasi dan optimasi infrastruktur cloud untuk skalabilitas dan efisiensi maksimal.</p>
+                    <ul class="service-features">
+                        <li>Cloud Migration Strategy</li>
+                        <li>Infrastructure as Code (IaC)</li>
+                        <li>Container Orchestration</li>
+                        <li>CI/CD Pipeline Setup</li>
+                        <li>Server Configuration & Management</li>
+                        <li>Load Balancing & Scaling</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rate Card Section -->
+    <section id="pricing">
+        <div class="container">
+            <h2>Rate Card</h2>
+            <p class="subtitle">Investasi yang transparan untuk solusi teknologi berkualitas tinggi</p>
+            
+            <div class="rate-card-grid">
+                <div class="pricing-card">
+                    <h3>Web Development</h3>
+                    <div class="price">Mulai 15 Juta <span class="price-label">/ project</span></div>
+                    <ul class="pricing-features">
+                        <li>✓ Responsive Design (Desktop & Mobile)</li>
+                        <li>✓ Admin Panel / Dashboard</li>
+                        <li>✓ Database Design</li>
+                        <li>✓ REST API Development</li>
+                        <li>✓ Basic SEO Optimization</li>
+                        <li>✓ 1 Bulan Free Support</li>
+                        <li>✓ Source Code Ownership</li>
+                        <li>✓ Cloud Deployment</li>
+                    </ul>
+                    <a href="https://wa.me/6289660103000?text=Halo%20DAS%20Studio,%20saya%20tertarik%20dengan%20layanan%20Web%20Development" class="cta-button">Konsultasi Gratis</a>
+                </div>
+
+                <div class="pricing-card featured">
+                    <span class="featured-badge">POPULER</span>
+                    <h3>AI Automation</h3>
+                    <div class="price">Mulai 25 Juta <span class="price-label">/ project</span></div>
+                    <ul class="pricing-features">
+                        <li>✓ Custom AI Chatbot</li>
+                        <li>✓ CRM dengan AI Analytics</li>
+                        <li>✓ Workflow Automation</li>
+                        <li>✓ Integration dengan Sistem Existing</li>
+                        <li>✓ Natural Language Processing</li>
+                        <li>✓ Training & Documentation</li>
+                        <li>✓ 2 Bulan Free Support</li>
+                        <li>✓ Performance Monitoring</li>
+                    </ul>
+                    <a href="https://wa.me/6289660103000?text=Halo%20DAS%20Studio,%20saya%20tertarik%20dengan%20layanan%20AI%20Automation" class="cta-button">Konsultasi Gratis</a>
+                </div>
+
+                <div class="pricing-card">
+                    <h3>Mobile App Development</h3>
+                    <div class="price">Mulai 30 Juta <span class="price-label">/ project</span></div>
+                    <ul class="pricing-features">
+                        <li>✓ Android & iOS (Hybrid/Native)</li>
+                        <li>✓ UI/UX Design</li>
+                        <li>✓ Backend API Development</li>
+                        <li>✓ Push Notification</li>
+                        <li>✓ In-App Analytics</li>
+                        <li>✓ Play Store/App Store Submission</li>
+                        <li>✓ 2 Bulan Free Support</li>
+                        <li>✓ App Maintenance Guide</li>
+                    </ul>
+                    <a href="https://wa.me/6289660103000?text=Halo%20DAS%20Studio,%20saya%20tertarik%20dengan%20layanan%20Mobile%20App%20Development" class="cta-button">Konsultasi Gratis</a>
+                </div>
+
+                <div class="pricing-card">
+                    <h3>IT Consulting</h3>
+                    <div class="price">2 Juta <span class="price-label">/ jam</span></div>
+                    <ul class="pricing-features">
+                        <li>✓ Technology Assessment</li>
+                        <li>✓ System Architecture Review</li>
+                        <li>✓ Digital Strategy Planning</li>
+                        <li>✓ Security Audit</li>
+                        <li>✓ Performance Optimization</li>
+                        <li>✓ Team Training & Workshop</li>
+                        <li>✓ Comprehensive Report</li>
+                        <li>✓ Implementation Roadmap</li>
+                    </ul>
+                    <a href="https://wa.me/6289660103000?text=Halo%20DAS%20Studio,%20saya%20tertarik%20dengan%20layanan%20IT%20Consulting" class="cta-button">Konsultasi Gratis</a>
+                </div>
+
+                <div class="pricing-card">
+                    <h3>Monthly Maintenance</h3>
+                    <div class="price">5 Juta <span class="price-label">/ bulan</span></div>
+                    <ul class="pricing-features">
+                        <li>✓ 24/7 Technical Support</li>
+                        <li>✓ Bug Fixes & Updates</li>
+                        <li>✓ Security Monitoring</li>
+                        <li>✓ Performance Optimization</li>
+                        <li>✓ Monthly Reports</li>
+                        <li>✓ Backup Management</li>
+                        <li>✓ Minor Feature Updates</li>
+                        <li>✓ Uptime Guarantee 99.5%</li>
+                    </ul>
+                    <a href="https://wa.me/6289660103000?text=Halo%20DAS%20Studio,%20saya%20tertarik%20dengan%20layanan%20Monthly%20Maintenance" class="cta-button">Konsultasi Gratis</a>
+                </div>
+
+                <div class="pricing-card">
+                    <h3>Custom Solution</h3>
+                    <div class="price">Sesuai Kebutuhan</div>
+                    <ul class="pricing-features">
+                        <li>✓ Flexible Pricing Model</li>
+                        <li>✓ Tailored to Your Needs</li>
+                        <li>✓ Enterprise Solutions</li>
+                        <li>✓ Complex Integrations</li>
+                        <li>✓ Dedicated Team</li>
+                        <li>✓ Priority Support</li>
+                        <li>✓ Long-term Partnership</li>
+                        <li>✓ Custom SLA Agreement</li>
+                    </ul>
+                    <a href="https://wa.me/6289660103000?text=Halo%20DAS%20Studio,%20saya%20tertarik%20untuk%20berdiskusi%20tentang%20Custom%20Solution" class="cta-button">Hubungi Kami</a>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 40px; padding: 30px; background: #eff6ff; border-radius: 15px;">
+                <p style="font-size: 1.1em; color: var(--text);"><strong>💡 Catatan:</strong> Harga dapat disesuaikan berdasarkan kompleksitas proyek, timeline, dan kebutuhan spesifik. Hubungi kami untuk penawaran khusus dan paket bundling.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section id="why-us">
+        <div class="container">
+            <h2>Mengapa Memilih DAS Studio?</h2>
+            <p class="subtitle">Keunggulan yang membedakan kami sebagai partner IT terpercaya</p>
+            
+            <div class="features-grid">
+                <div class="feature-item">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Teknologi Terkini</h3>
+                    <p>Menggunakan tech stack modern dan proven untuk hasil optimal</p>
+                </div>
+
+                <div class="feature-item">
+                    <div class="feature-icon">🎯</div>
+                    <h3>Solusi Terukur</h3>
+                    <p>Setiap solusi dirancang dengan KPI jelas dan ROI yang terukur</p>
+                </div>
+
+                <div class="feature-item">
+                    <div class="feature-icon">🤝</div>
+                    <h3>Partnership Approach</h3>
+                    <p>Kami bekerja sebagai mitra, bukan hanya vendor</p>
+                </div>
+
+                <div class="feature-item">
+                    <div class="feature-icon">⏱️</div>
+                    <h3>Tepat Waktu</h3>
+                    <p>Komitmen terhadap deadline dengan kualitas terjaga</p>
+                </div>
+
+                <div class="feature-item">
+                    <div class="feature-icon">💰</div>
+                    <h3>Harga Kompetitif</h3>
+                    <p>Investasi yang worth it dengan kualitas enterprise</p>
+                </div>
+
+                <div class="feature-item">
+                    <div class="feature-icon">🔒</div>
+                    <h3>Keamanan Terjamin</h3>
+                    <p>Implementasi best practices security di setiap proyek</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+        <div class="container">
+            <h2>Siap Memulai Transformasi Digital?</h2>
+            <p class="subtitle" style="color: rgba(255,255,255,0.9);">Hubungi kami untuk konsultasi gratis dan diskusikan kebutuhan IT bisnis Anda</p>
+            
+            <div class="contact-info">
+                <div class="contact-item">
+                    📱 <a href="https://wa.me/6289660103000">0896 6010 3000</a>
+                </div>
+                <div class="contact-item">
+                    🌐 <a href="https://das-studio.io">das-studio.io</a>
+                </div>
+                <div class="contact-item">
+                    ✉️ <a href="mailto:info@das-studio.io">info@das-studio.io</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 DAS Studio. All rights reserved. | IT Consultant & Digital Solutions Partner</p>
+        </div>
+    </footer>
+</body>
+</html>
