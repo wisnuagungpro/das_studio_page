@@ -20,6 +20,7 @@
             --text-light: #64748b;
             --bg: #ffffff;
             --bg-alt: #f8fafc;
+            --bg-section: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
         }
 
@@ -348,12 +349,13 @@
             color: var(--text-light);
         }
 
-        /* Contact Section */
+               /* Contact Section */
         .contact-section {
-            background: var(--gradient);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%)  !important;;
             color: white;
             text-align: center;
             padding: 80px 20px;
+            position: relative;
         }
 
         .contact-section h2 {
@@ -363,6 +365,7 @@
         .contact-section h2::after {
             background: white;
         }
+
 
         .contact-info {
             display: flex;
